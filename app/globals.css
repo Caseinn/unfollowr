@@ -1,0 +1,155 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  --ig-blue: #5851db;
+  --ig-purple: #833ab4;
+  --ig-magenta: #c13584;
+  --ig-pink: #e1306c;
+  --ig-orange: #f77737;
+  --ig-yellow: #feda75;
+
+  --background: #fffafc;
+  --foreground: #120a1b;
+  --card: #ffffff;
+  --card-foreground: #120a1b;
+  --popover: #ffffff;
+  --popover-foreground: #120a1b;
+  --primary: var(--ig-pink);
+  --primary-foreground: #fffaf7;
+  --secondary: #fff0f7;
+  --secondary-foreground: #7a1f52;
+  --muted: #f7f1ff;
+  --muted-foreground: #6a5a77;
+  --accent: #fff3ec;
+  --accent-foreground: #8b2b63;
+  --destructive: #ef3b5e;
+  --border: #f3d9ff;
+  --input: #f3d9ff;
+  --ring: var(--ig-magenta);
+  --chart-1: var(--ig-blue);
+  --chart-2: var(--ig-purple);
+  --chart-3: var(--ig-magenta);
+  --chart-4: var(--ig-orange);
+  --chart-5: var(--ig-yellow);
+  --sidebar: #fff0f7;
+  --sidebar-foreground: #120a1b;
+  --sidebar-primary: var(--ig-pink);
+  --sidebar-primary-foreground: #fffaf7;
+  --sidebar-accent: #fff3ec;
+  --sidebar-accent-foreground: #7a1f52;
+  --sidebar-border: #f3d9ff;
+  --sidebar-ring: var(--ig-magenta);
+}
+
+.dark {
+  --background: #0d0816;
+  --foreground: #f8ecff;
+  --card: #161025;
+  --card-foreground: #f8ecff;
+  --popover: #161025;
+  --popover-foreground: #f8ecff;
+  --primary: #ff6fae;
+  --primary-foreground: #0b0612;
+  --secondary: #1f162b;
+  --secondary-foreground: #f8ecff;
+  --muted: #1f162b;
+  --muted-foreground: #caaad7;
+  --accent: #221832;
+  --accent-foreground: #feda75;
+  --destructive: #ff6b6b;
+  --border: #2c2039;
+  --input: #2c2039;
+  --ring: #f06292;
+  --chart-1: #8d7bff;
+  --chart-2: #b66dff;
+  --chart-3: #ff7ab5;
+  --chart-4: #ff9a62;
+  --chart-5: #ffe083;
+  --sidebar: #161025;
+  --sidebar-foreground: #f8ecff;
+  --sidebar-primary: #ff6fae;
+  --sidebar-primary-foreground: #0b0612;
+  --sidebar-accent: #221832;
+  --sidebar-accent-foreground: #f8ecff;
+  --sidebar-border: #2c2039;
+  --sidebar-ring: #f06292;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .ig-gradient {
+    background-image: linear-gradient(
+      120deg,
+      var(--ig-yellow),
+      var(--ig-orange),
+      var(--ig-pink),
+      var(--ig-magenta),
+      var(--ig-purple),
+      var(--ig-blue)
+    );
+  }
+
+  .text-ig {
+    color: var(--ig-pink);
+  }
+
+  .border-ig {
+    border-color: var(--ig-pink);
+  }
+}
