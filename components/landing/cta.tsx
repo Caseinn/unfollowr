@@ -13,7 +13,7 @@ export default function Cta() {
               Upload your Instagram export zip and see your results in seconds.
             </p>
             <div className="mt-8 flex justify-center gap-3">
-              <Button size="lg" className="ig-gradient text-white">Upload my export</Button>
+              <Button size="lg" className="ig-gradient text-white hover:opacity-90">Upload my export</Button>
             </div>
           </div>
         </div>

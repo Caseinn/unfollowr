@@ -18,7 +18,7 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button className="ig-gradient text-white">Get Started</Button>
+          <Button className="ig-gradient text-white hover:opacity-90">Get Started</Button>
         </div>
       </div>
     </header>

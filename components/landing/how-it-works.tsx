@@ -19,7 +19,7 @@ const steps = [
   {
     n: "02",
     title: "Download it",
-    desc: "Instagram emails a link. Save the zip to your device when it arrives.",
+    desc: "Save the zip to your device when it ready.",
   },
   {
     n: "03",

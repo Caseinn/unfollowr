@@ -25,11 +25,11 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button size="lg" className="ig-gradient text-white">
+              <Button size="lg" className="ig-gradient text-white hover:opacity-90">
                 Upload my export <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline">
-                See how it works
+              <Button size="lg" variant="outline" asChild>
+                <a href="#how">See how it works</a>
               </Button>
             </div>
 
@@ -70,9 +70,6 @@ export default function Hero() {
               <div className="mt-6 h-2 w-full rounded-full bg-muted overflow-hidden">
                 <div className="h-full w-2/3 ig-gradient" />
               </div>
-              <p className="mt-2 text-xs text-muted-foreground">
-                Sample view of the results screen.
-              </p>
             </div>
           </div>
         </div>
