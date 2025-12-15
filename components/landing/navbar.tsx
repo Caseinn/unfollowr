@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
 
-export default function Navbar() {
+type NavbarProps = {
+  onOpenUpload?: () => void;
+};
+
+export default function Navbar({ onOpenUpload }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 border-b bg-background/70 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
@@ -18,7 +22,9 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button className="ig-gradient text-white hover:opacity-90">Get Started</Button>
+          <Button className="ig-gradient text-white hover:opacity-90" onClick={onOpenUpload}>
+            Get Started
+          </Button>
         </div>
       </div>
     </header>

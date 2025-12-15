@@ -153,3 +153,7 @@
     border-color: var(--ig-pink);
   }
 }
+
+::-webkit-scrollbar{
+  width: 0px;
+}

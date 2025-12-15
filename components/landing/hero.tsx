@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck, Zap } from "lucide-react";
 
-export default function Hero() {
+type HeroProps = {
+  onOpenUpload?: () => void;
+};
+
+export default function Hero({ onOpenUpload }: HeroProps) {
   return (
     <section className="relative overflow-hidden">
       {/* IG glow blobs */}
@@ -25,7 +29,7 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button size="lg" className="ig-gradient text-white hover:opacity-90">
+              <Button size="lg" className="ig-gradient text-white hover:opacity-90" onClick={onOpenUpload}>
                 Upload my export <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button size="lg" variant="outline" asChild>
@@ -62,8 +66,8 @@ export default function Hero() {
               </div>
 
               <div className="mt-6 space-y-3">
-                <Row name="bintang" badge="Unfollowed" />
-                <Row name="fikri" badge="Not following back" />
+                <Row name="bintang" badge="Unfollower" />
+                <Row name="fikri" badge="Fans" />
                 <Row name="fauzan" badge="Mutual" />
               </div>
 

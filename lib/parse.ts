@@ -7,22 +7,30 @@ export type ParsedIG = {
 const uniq = (arr: string[]) =>
   Array.from(new Set(arr.map((s) => s.trim()).filter(Boolean)));
 
-export function extractFollowersUsernames(json: any): string[] {
+type FollowersNode = {
+  string_list_data?: { value?: unknown }[];
+  [key: string]: unknown;
+};
+
+export function extractFollowersUsernames(json: unknown): string[] {
   const out: string[] = [];
 
-  const walk = (node: any) => {
+  const walk = (node: unknown) => {
     if (!node) return;
     if (Array.isArray(node)) return node.forEach(walk);
 
     if (typeof node === "object") {
-      if (Array.isArray(node.string_list_data)) {
-        for (const item of node.string_list_data) {
+      const obj = node as FollowersNode;
+      if (Array.isArray(obj.string_list_data)) {
+        for (const item of obj.string_list_data) {
           if (typeof item?.value === "string" && item.value.trim()) {
             out.push(item.value.trim());
           }
         }
       }
-      for (const k of Object.keys(node)) walk(node[k]);
+      for (const k of Object.keys(obj)) {
+        walk(obj[k]);
+      }
     }
   };
 
@@ -30,8 +38,12 @@ export function extractFollowersUsernames(json: any): string[] {
   return uniq(out);
 }
 
-export function extractFollowingUsernames(json: any): string[] {
-  const rel = json?.relationships_following;
+type FollowingJson = {
+  relationships_following?: { title?: unknown }[];
+};
+
+export function extractFollowingUsernames(json: unknown): string[] {
+  const rel = (json as FollowingJson | null | undefined)?.relationships_following;
   if (!Array.isArray(rel)) return [];
 
   const out: string[] = [];

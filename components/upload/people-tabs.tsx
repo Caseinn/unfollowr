@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState, useDeferredValue, useMemo } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { PersonRow } from "./person-row";
@@ -27,36 +27,37 @@ export function PeopleTabs({
   mutuals: string[];
 }) {
   const [q, setQ] = useState("");
+  const deferredQ = useDeferredValue(q);
 
-  const filt = (arr: string[]) => {
-    const s = q.trim().toLowerCase();
+  const filterList = (arr: string[], term: string) => {
+    const s = term.trim().toLowerCase();
     if (!s) return arr;
     return arr.filter((u) => u.toLowerCase().includes(s));
   };
 
-  const a = useMemo(() => filt(notBack), [notBack, q]);
-  const b = useMemo(() => filt(fans), [fans, q]);
-  const c = useMemo(() => filt(mutuals), [mutuals, q]);
+  const a = useMemo(() => filterList(notBack, deferredQ), [notBack, deferredQ]);
+  const b = useMemo(() => filterList(fans, deferredQ), [fans, deferredQ]);
+  const c = useMemo(() => filterList(mutuals, deferredQ), [mutuals, deferredQ]);
 
   return (
     <div className="rounded-3xl border bg-background/70 backdrop-blur p-6 shadow-sm">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div>
           <p className="font-semibold">People</p>
-          <p className="text-sm text-muted-foreground">Browse like your mock “Row” UI.</p>
+          <p className="text-sm text-muted-foreground">Browse each list and tap through to Instagram.</p>
         </div>
         <Input
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Search username…"
+          placeholder="Search username"
           className="md:max-w-sm rounded-full"
         />
       </div>
 
       <Tabs defaultValue="notback" className="mt-5">
-        <TabsList className="rounded-full bg-muted/60">
+        <TabsList className="rounded-full bg-muted/60 flex-wrap gap-2 w-full sm:w-auto">
           <TabsTrigger value="notback" className="rounded-full">
-            Not back ({notBack.length})
+            Unfollowers ({notBack.length})
           </TabsTrigger>
           <TabsTrigger value="fans" className="rounded-full">
             Fans ({fans.length})
@@ -67,7 +68,7 @@ export function PeopleTabs({
         </TabsList>
 
         <TabsContent value="notback" className="mt-5">
-          <List items={a} badge="Not following back" />
+          <List items={a} badge="Unfollower" />
         </TabsContent>
         <TabsContent value="fans" className="mt-5">
           <List items={b} badge="Fan" />

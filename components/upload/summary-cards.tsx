@@ -34,10 +34,10 @@ export function SummaryCards({
         <div className="h-10 w-10 rounded-full ig-gradient" />
       </div>
 
-      <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <Stat title="Followers" value={followers.toLocaleString()} />
         <Stat title="Following" value={following.toLocaleString()} />
-        <Stat title="Not following back" value={notBack.toLocaleString()} highlight />
+        <Stat title="Unfollowers" value={notBack.toLocaleString()} highlight />
         <Stat title="Fans" value={fans.toLocaleString()} />
       </div>
 

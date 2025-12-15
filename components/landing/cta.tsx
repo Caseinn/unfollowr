@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
 
-export default function Cta() {
+type CtaProps = {
+  onOpenUpload?: () => void;
+};
+
+export default function Cta({ onOpenUpload }: CtaProps) {
   return (
     <section className="py-24">
       <div className="mx-auto max-w-6xl px-6">
@@ -13,7 +17,9 @@ export default function Cta() {
               Upload your Instagram export zip and see your results in seconds.
             </p>
             <div className="mt-8 flex justify-center gap-3">
-              <Button size="lg" className="ig-gradient text-white hover:opacity-90">Upload my export</Button>
+              <Button size="lg" className="ig-gradient text-white hover:opacity-90" onClick={onOpenUpload}>
+                Upload my export
+              </Button>
             </div>
           </div>
         </div>
