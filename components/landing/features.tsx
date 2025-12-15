@@ -2,10 +2,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Shield, UserMinus, Users, Sparkles } from "lucide-react";
 
 const items = [
-  { icon: UserMinus, title: "Unfollowers", desc: "See who unfollowed you since last check." },
-  { icon: Users, title: "Not Following Back", desc: "Find accounts you follow that don’t follow you back." },
-  { icon: Sparkles, title: "Clean Insights", desc: "Minimal dashboard with the stats you actually need." },
-  { icon: Shield, title: "Privacy-first", desc: "No password storage. No auto-actions." },
+  { icon: UserMinus, title: "Unfollowers", desc: "Upload the Export your information zip to see who dropped off." },
+  { icon: Users, title: "Not Following Back", desc: "Spot accounts you follow who do not follow you." },
+  { icon: Sparkles, title: "Mutuals you like", desc: "Keep the people who follow you back front and center." },
+  { icon: Shield, title: "No password needed", desc: "We only use the Instagram data zip you provide." },
 ];
 
 export default function Features() {
@@ -13,10 +13,10 @@ export default function Features() {
     <section id="features" className="py-20">
       <div className="mx-auto max-w-6xl px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center">
-          Everything you need, <span className="text-ig">nothing extra</span>
+          Everything runs from <span className="text-ig">your export</span>
         </h2>
         <p className="mt-4 text-center text-muted-foreground">
-          Built for speed + trust with Instagram-style aesthetics.
+          Use the official Instagram export you download from Account Center.
         </p>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">

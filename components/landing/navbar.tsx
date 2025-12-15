@@ -18,9 +18,6 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="hidden sm:inline-flex">
-            Demo
-          </Button>
           <Button className="ig-gradient text-white">Get Started</Button>
         </div>
       </div>

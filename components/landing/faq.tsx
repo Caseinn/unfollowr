@@ -17,19 +17,19 @@ export default function Faq() {
           <AccordionItem value="1">
             <AccordionTrigger>Is this safe?</AccordionTrigger>
             <AccordionContent>
-              Landing copy: we don’t store passwords, we don’t do auto-actions. (Real app must enforce this.)
+              You never enter your Instagram password here. You use the official data zip that comes from Instagram.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="2">
             <AccordionTrigger>Do you store my data?</AccordionTrigger>
             <AccordionContent>
-              For landing: session-only. If you build backend later, implement delete policy + transparent docs.
+              The checker reads your export while you use it. If saving is ever added, it will be stated clearly first.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="3">
-            <AccordionTrigger>Is it affiliated with Instagram?</AccordionTrigger>
+            <AccordionTrigger>Is this affiliated with Instagram?</AccordionTrigger>
             <AccordionContent>
-              No—include a disclaimer. Use “Instagram” as descriptive reference only.
+              No. Instagram is mentioned only to explain where your export comes from.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
