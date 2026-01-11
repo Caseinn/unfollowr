@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -6,8 +6,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-jetbrains);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -47,80 +47,110 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 1.5rem;
 
-  --ig-blue: #5851db;
   --ig-purple: #833ab4;
-  --ig-magenta: #c13584;
-  --ig-pink: #e1306c;
-  --ig-orange: #f77737;
-  --ig-yellow: #feda75;
+  --ig-red: #fd1d1d;
+  --ig-yellow: #fcaf45;
 
-  --background: #fffafc;
-  --foreground: #120a1b;
+  --tone-mutuals: #00d26a;
+  --tone-not-back: #ff6b6b;
+  --tone-fans: #5d5fef;
+  --tone-unfollowers: #94a3b8;
+
+  --tone-mutuals-soft: rgba(0, 210, 106, 0.12);
+  --tone-mutuals-border: rgba(0, 210, 106, 0.35);
+  --tone-not-back-soft: rgba(255, 107, 107, 0.12);
+  --tone-not-back-border: rgba(255, 107, 107, 0.35);
+  --tone-fans-soft: rgba(93, 95, 239, 0.12);
+  --tone-fans-border: rgba(93, 95, 239, 0.35);
+  --tone-unfollowers-soft: rgba(148, 163, 184, 0.12);
+  --tone-unfollowers-border: rgba(148, 163, 184, 0.35);
+
+  --font-body: var(--font-instrument);
+  --font-headline: var(--font-jakarta);
+
+  --background: #fafafa;
+  --foreground: #17151c;
   --card: #ffffff;
-  --card-foreground: #120a1b;
+  --card-foreground: #17151c;
   --popover: #ffffff;
-  --popover-foreground: #120a1b;
-  --primary: var(--ig-pink);
-  --primary-foreground: #fffaf7;
-  --secondary: #fff0f7;
-  --secondary-foreground: #7a1f52;
-  --muted: #f7f1ff;
-  --muted-foreground: #6a5a77;
+  --popover-foreground: #17151c;
+  --primary: var(--ig-red);
+  --primary-foreground: #ffffff;
+  --secondary: #f5f1f2;
+  --secondary-foreground: #2f2735;
+  --muted: #f1eef2;
+  --muted-foreground: #6b6371;
   --accent: #fff3ec;
-  --accent-foreground: #8b2b63;
+  --accent-foreground: #3c2a33;
   --destructive: #ef3b5e;
-  --border: #f3d9ff;
-  --input: #f3d9ff;
-  --ring: var(--ig-magenta);
-  --chart-1: var(--ig-blue);
-  --chart-2: var(--ig-purple);
-  --chart-3: var(--ig-magenta);
-  --chart-4: var(--ig-orange);
+  --border: #e7e2ea;
+  --input: #e7e2ea;
+  --ring: var(--ig-red);
+  --chart-1: var(--tone-not-back);
+  --chart-2: var(--tone-fans);
+  --chart-3: var(--tone-mutuals);
+  --chart-4: var(--ig-red);
   --chart-5: var(--ig-yellow);
-  --sidebar: #fff0f7;
-  --sidebar-foreground: #120a1b;
-  --sidebar-primary: var(--ig-pink);
-  --sidebar-primary-foreground: #fffaf7;
-  --sidebar-accent: #fff3ec;
-  --sidebar-accent-foreground: #7a1f52;
-  --sidebar-border: #f3d9ff;
-  --sidebar-ring: var(--ig-magenta);
+  --sidebar: #faf1f4;
+  --sidebar-foreground: #17151c;
+  --sidebar-primary: var(--ig-red);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fff0e9;
+  --sidebar-accent-foreground: #3c2a33;
+  --sidebar-border: #f0e3ea;
+  --sidebar-ring: var(--ig-red);
+
+  --page-wash: linear-gradient(
+      135deg,
+      rgba(252, 175, 69, 0.18) 0%,
+      rgba(253, 29, 29, 0.08) 45%,
+      rgba(250, 250, 250, 0) 75%
+    ),
+    linear-gradient(180deg, #fafafa 0%, #f7f5f8 100%);
 }
 
 .dark {
-  --background: #0d0816;
-  --foreground: #f8ecff;
-  --card: #161025;
-  --card-foreground: #f8ecff;
-  --popover: #161025;
-  --popover-foreground: #f8ecff;
-  --primary: #ff6fae;
-  --primary-foreground: #0b0612;
-  --secondary: #1f162b;
-  --secondary-foreground: #f8ecff;
-  --muted: #1f162b;
-  --muted-foreground: #caaad7;
-  --accent: #221832;
-  --accent-foreground: #feda75;
+  --background: #121212;
+  --foreground: #f6f4f7;
+  --card: #1a1a1a;
+  --card-foreground: #f6f4f7;
+  --popover: #1a1a1a;
+  --popover-foreground: #f6f4f7;
+  --primary: var(--ig-red);
+  --primary-foreground: #ffffff;
+  --secondary: #1f1c24;
+  --secondary-foreground: #f6f4f7;
+  --muted: #1f1c24;
+  --muted-foreground: #b0a9b7;
+  --accent: #211b24;
+  --accent-foreground: #f6f4f7;
   --destructive: #ff6b6b;
-  --border: #2c2039;
-  --input: #2c2039;
-  --ring: #f06292;
-  --chart-1: #8d7bff;
-  --chart-2: #b66dff;
-  --chart-3: #ff7ab5;
-  --chart-4: #ff9a62;
-  --chart-5: #ffe083;
-  --sidebar: #161025;
-  --sidebar-foreground: #f8ecff;
-  --sidebar-primary: #ff6fae;
-  --sidebar-primary-foreground: #0b0612;
-  --sidebar-accent: #221832;
-  --sidebar-accent-foreground: #f8ecff;
-  --sidebar-border: #2c2039;
-  --sidebar-ring: #f06292;
+  --border: #2c2831;
+  --input: #2c2831;
+  --ring: var(--ig-red);
+  --chart-1: var(--tone-not-back);
+  --chart-2: var(--tone-fans);
+  --chart-3: var(--tone-mutuals);
+  --chart-4: var(--ig-red);
+  --chart-5: var(--ig-yellow);
+  --sidebar: #18151c;
+  --sidebar-foreground: #f6f4f7;
+  --sidebar-primary: var(--ig-red);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #211b24;
+  --sidebar-accent-foreground: #f6f4f7;
+  --sidebar-border: #2c2831;
+  --sidebar-ring: var(--ig-red);
+
+  --page-wash: linear-gradient(
+      135deg,
+      rgba(252, 175, 69, 0.1) 0%,
+      rgba(253, 29, 29, 0.06) 45%,
+      rgba(18, 18, 18, 0) 75%
+    ),
+    linear-gradient(180deg, #121212 0%, #151219 100%);
 }
 
 @layer base {
@@ -128,32 +158,227 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    background-image: var(--page-wash);
+    background-attachment: fixed;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-headline);
+    letter-spacing: -0.02em;
   }
 }
 
 @layer utilities {
   .ig-gradient {
-    background-image: linear-gradient(
-      120deg,
-      var(--ig-yellow),
-      var(--ig-orange),
-      var(--ig-pink),
-      var(--ig-magenta),
-      var(--ig-purple),
-      var(--ig-blue)
-    );
+    background-image: linear-gradient(120deg, var(--ig-purple), var(--ig-red), var(--ig-yellow));
   }
 
   .text-ig {
-    color: var(--ig-pink);
+    color: var(--ig-red);
   }
 
   .border-ig {
-    border-color: var(--ig-pink);
+    border-color: var(--ig-red);
+  }
+
+  .font-display {
+    font-family: var(--font-headline);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .lucid-panel {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 60px rgba(17, 12, 23, 0.08);
+    backdrop-filter: blur(12px);
+  }
+
+  .dark .lucid-panel {
+    background: rgba(18, 18, 18, 0.72);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  .lucid-border {
+    background: linear-gradient(120deg, var(--ig-purple), var(--ig-red), var(--ig-yellow));
+    border-radius: 1.5rem;
+    padding: 1px;
+  }
+
+  .tone-chip {
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    display: inline-flex;
+    font-size: 0.75rem;
+    font-weight: 600;
+    gap: 0.35rem;
+    padding: 0.2rem 0.65rem;
+    text-transform: none;
+    white-space: nowrap;
+  }
+
+  .tone-chip[data-tone="not-back"] {
+    background: var(--tone-not-back-soft);
+    border-color: var(--tone-not-back-border);
+    color: var(--tone-not-back);
+  }
+
+  .tone-chip[data-tone="fans"] {
+    background: var(--tone-fans-soft);
+    border-color: var(--tone-fans-border);
+    color: var(--tone-fans);
+  }
+
+  .tone-chip[data-tone="mutuals"] {
+    background: var(--tone-mutuals-soft);
+    border-color: var(--tone-mutuals-border);
+    color: var(--tone-mutuals);
+  }
+
+  .tone-chip[data-tone="unfollowers"] {
+    background: var(--tone-unfollowers-soft);
+    border-color: var(--tone-unfollowers-border);
+    color: var(--tone-unfollowers);
+  }
+
+  .tone-bar {
+    border-radius: 999px;
+    height: 0.25rem;
+    width: 2.5rem;
+    background: var(--border);
+  }
+
+  .tone-bar[data-tone="not-back"] {
+    background: var(--tone-not-back);
+  }
+
+  .tone-bar[data-tone="fans"] {
+    background: var(--tone-fans);
+  }
+
+  .tone-bar[data-tone="mutuals"] {
+    background: var(--tone-mutuals);
+  }
+
+  .tone-bar[data-tone="unfollowers"] {
+    background: var(--tone-unfollowers);
+  }
+
+  .stat-card {
+    border-radius: 1.25rem;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1rem;
+  }
+
+  .dark .stat-card {
+    background: rgba(18, 18, 18, 0.68);
+  }
+
+  .stat-card[data-tone="not-back"] {
+    border-color: var(--tone-not-back-border);
+  }
+
+  .stat-card[data-tone="fans"] {
+    border-color: var(--tone-fans-border);
+  }
+
+  .stat-card[data-tone="mutuals"] {
+    border-color: var(--tone-mutuals-border);
+  }
+
+  .stat-card[data-tone="unfollowers"] {
+    border-color: var(--tone-unfollowers-border);
+  }
+
+  .stat-card[data-tone="not-back"] .stat-value {
+    color: var(--tone-not-back);
+  }
+
+  .stat-card[data-tone="fans"] .stat-value {
+    color: var(--tone-fans);
+  }
+
+  .stat-card[data-tone="mutuals"] .stat-value {
+    color: var(--tone-mutuals);
+  }
+
+  .stat-card[data-tone="unfollowers"] .stat-value {
+    color: var(--tone-unfollowers);
+  }
+
+  .step-chip {
+    align-items: center;
+    border-radius: 999px;
+    color: #fff;
+    display: inline-flex;
+    font-size: 0.75rem;
+    font-weight: 700;
+    height: 2.5rem;
+    justify-content: center;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    width: 2.5rem;
+    background: linear-gradient(120deg, var(--ig-purple), var(--ig-red), var(--ig-yellow));
+    box-shadow: 0 12px 24px rgba(131, 58, 180, 0.2);
+  }
+
+  .tone-dot {
+    border-radius: 999px;
+    display: inline-flex;
+    height: 0.4rem;
+    width: 0.4rem;
+    background: currentColor;
+  }
+
+  .fade-rise {
+    animation: fade-rise 0.7s ease-out both;
+  }
+
+  .stagger-1 {
+    animation-delay: 0.05s;
+  }
+
+  .stagger-2 {
+    animation-delay: 0.12s;
+  }
+
+  .stagger-3 {
+    animation-delay: 0.18s;
+  }
+
+  .stagger-4 {
+    animation-delay: 0.24s;
   }
 }
 
-::-webkit-scrollbar{
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-rise {
+    animation: none;
+  }
+}
+
+::-webkit-scrollbar {
   width: 0px;
 }
+
