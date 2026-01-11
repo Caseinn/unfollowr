@@ -38,13 +38,13 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-[calc(100vw-1.25rem)] sm:w-[95vw] max-w-5xl translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background/90 p-4 sm:p-6 shadow-xl duration-150 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 rounded-3xl backdrop-blur max-h-[90vh] overflow-y-auto overflow-x-auto motion-reduce:animate-none motion-reduce:transition-none will-change-transform",
+        "fixed left-[50%] top-[50%] z-50 grid w-[calc(100vw-1.25rem)] sm:w-[95vw] max-w-5xl translate-x-[-50%] translate-y-[-50%] gap-4 border border-border/80 bg-card/90 p-4 sm:p-6 shadow-2xl duration-150 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 rounded-3xl backdrop-blur max-h-[90vh] overflow-y-auto overflow-x-auto motion-reduce:animate-none motion-reduce:transition-none will-change-transform",
         className
       )}
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-full border bg-background p-1 text-muted-foreground transition hover:text-foreground">
+      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-full border border-border/80 bg-background/80 p-1 text-muted-foreground transition hover:text-foreground">
         <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
@@ -69,7 +69,7 @@ const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn("text-lg font-semibold leading-none tracking-tight", className)}
+    className={cn("text-lg font-semibold font-display leading-none tracking-tight", className)}
     {...props}
   />
 ));
