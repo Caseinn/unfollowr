@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -20,11 +20,11 @@ export function UploadCard({
   error: string | null;
 }) {
   return (
-    <Card className="rounded-3xl border bg-background/80 backdrop-blur shadow-sm">
+    <Card className="border-border/70 bg-background/70">
       <CardHeader className="space-y-1">
-        <CardTitle>Upload your Instagram export (.zip)</CardTitle>
+        <CardTitle className="text-xl">Upload your Instagram export</CardTitle>
         <p className="text-sm text-muted-foreground">
-          Use the Export your information zip from Account Center, then run the check here.
+          Drop the Export your information zip from Account Center. Everything stays on your device.
         </p>
       </CardHeader>
 
@@ -32,17 +32,17 @@ export function UploadCard({
         <Input
           type="file"
           accept=".zip"
-          className="rounded-2xl cursor-pointer"
+          className="cursor-pointer"
           onChange={(e) => setZipFile(e.target.files?.[0] ?? null)}
         />
 
         <div className="flex flex-wrap gap-2">
           <Button
-            className="ig-gradient text-white hover:opacity-90"
+            className="ig-gradient text-white hover:opacity-90 shadow-lg"
             onClick={onAnalyze}
             disabled={!zipFile || loading}
           >
-            {loading ? "Analyzing..." : "Analyze"}
+            {loading ? "Analyzing..." : "Analyze export"}
           </Button>
 
           <Button variant="outline" onClick={onReset} disabled={loading}>
@@ -50,9 +50,9 @@ export function UploadCard({
           </Button>
         </div>
 
-        <div className="text-xs text-muted-foreground rounded-2xl border bg-muted/40 p-3">
+        <div className="rounded-2xl border border-dashed border-border/70 bg-background/70 p-3 text-xs text-muted-foreground">
           Expected ZIP paths:
-          <div className="mt-1 font-mono text-foreground/80">
+          <div className="mt-1 font-mono text-foreground/80 break-all">
             connections/followers_and_following/followers_1.json
             <br />
             connections/followers_and_following/following.json
@@ -65,3 +65,4 @@ export function UploadCard({
     </Card>
   );
 }
+

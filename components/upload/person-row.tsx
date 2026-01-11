@@ -1,12 +1,22 @@
-"use client";
+﻿"use client";
 
 import { ExternalLink } from "lucide-react";
 
-export function PersonRow({ name, badge }: { name: string; badge: string }) {
-  const isHot = badge === "Unfollowed" || badge === "Not following back";
+type Tone = "not-back" | "fans" | "mutuals";
+
+export function PersonRow({
+  name,
+  badge,
+  tone,
+}: {
+  name: string;
+  badge: string;
+  tone: Tone;
+}) {
   return (
-    <div className="flex items-center justify-between rounded-2xl border p-3 bg-background/70">
-      <div className="flex items-center gap-3 min-w-0">
+    <div className="flex items-center justify-between rounded-2xl border border-border/70 bg-background/70 p-3">
+      <div className="flex min-w-0 items-center gap-3">
+        <div className="h-9 w-9 rounded-full border border-border/70 bg-background/60" />
         <div className="min-w-0">
           <p className="text-sm font-medium truncate">@{name}</p>
           <a
@@ -20,9 +30,11 @@ export function PersonRow({ name, badge }: { name: string; badge: string }) {
         </div>
       </div>
 
-      <span className={`text-xs px-2 py-1 rounded-full border ${isHot ? "text-ig border-ig/40" : "text-muted-foreground"}`}>
+      <span className="tone-chip" data-tone={tone}>
+        <span className="tone-dot" />
         {badge}
       </span>
     </div>
   );
 }
+

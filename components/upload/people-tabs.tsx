@@ -1,17 +1,29 @@
-"use client";
+﻿"use client";
 
-import { useState, useDeferredValue, useMemo } from "react";
+import { useDeferredValue, useMemo, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { PersonRow } from "./person-row";
 
-function List({ items, badge }: { items: string[]; badge: string }) {
+type Tone = "not-back" | "fans" | "mutuals";
+
+function List({
+  items,
+  badge,
+  tone,
+}: {
+  items: string[];
+  badge: string;
+  tone: Tone;
+}) {
   return (
     <div className="space-y-3">
       {items.length === 0 ? (
-        <div className="rounded-2xl border p-4 text-sm text-muted-foreground">No results</div>
+        <div className="rounded-2xl border border-dashed border-border/70 bg-background/70 p-4 text-sm text-muted-foreground">
+          No results
+        </div>
       ) : (
-        items.map((u) => <PersonRow key={u} name={u} badge={badge} />)
+        items.map((u) => <PersonRow key={u} name={u} badge={badge} tone={tone} />)
       )}
     </div>
   );
@@ -35,48 +47,47 @@ export function PeopleTabs({
     return arr.filter((u) => u.toLowerCase().includes(s));
   };
 
-  const a = useMemo(() => filterList(notBack, deferredQ), [notBack, deferredQ]);
-  const b = useMemo(() => filterList(fans, deferredQ), [fans, deferredQ]);
-  const c = useMemo(() => filterList(mutuals, deferredQ), [mutuals, deferredQ]);
+  const filteredNotBack = useMemo(() => filterList(notBack, deferredQ), [notBack, deferredQ]);
+  const filteredFans = useMemo(() => filterList(fans, deferredQ), [fans, deferredQ]);
+  const filteredMutuals = useMemo(() => filterList(mutuals, deferredQ), [mutuals, deferredQ]);
 
   return (
-    <div className="rounded-3xl border bg-background/70 backdrop-blur p-6 shadow-sm">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+    <div className="lucid-panel p-6">
+      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="font-semibold">People</p>
-          <p className="text-sm text-muted-foreground">Browse each list and tap through to Instagram.</p>
+          <p className="font-semibold">People lists</p>
+          <p className="text-sm text-muted-foreground">
+            Browse each list and tap through to Instagram.
+          </p>
         </div>
         <Input
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="Search username"
-          className="md:max-w-sm rounded-full"
+          className="md:max-w-sm"
         />
       </div>
 
       <Tabs defaultValue="notback" className="mt-5">
-        <TabsList className="rounded-full bg-muted/60 flex-wrap gap-2 w-full sm:w-auto">
-          <TabsTrigger value="notback" className="rounded-full">
-            Unfollowers ({notBack.length})
+        <TabsList className="flex-wrap gap-2">
+          <TabsTrigger value="notback">
+            Not following back ({notBack.length})
           </TabsTrigger>
-          <TabsTrigger value="fans" className="rounded-full">
-            Fans ({fans.length})
-          </TabsTrigger>
-          <TabsTrigger value="mutuals" className="rounded-full">
-            Mutuals ({mutuals.length})
-          </TabsTrigger>
+          <TabsTrigger value="fans">Fans ({fans.length})</TabsTrigger>
+          <TabsTrigger value="mutuals">Mutuals ({mutuals.length})</TabsTrigger>
         </TabsList>
 
         <TabsContent value="notback" className="mt-5">
-          <List items={a} badge="Unfollower" />
+          <List items={filteredNotBack} badge="Not following back" tone="not-back" />
         </TabsContent>
         <TabsContent value="fans" className="mt-5">
-          <List items={b} badge="Fan" />
+          <List items={filteredFans} badge="Fan" tone="fans" />
         </TabsContent>
         <TabsContent value="mutuals" className="mt-5">
-          <List items={c} badge="Mutual" />
+          <List items={filteredMutuals} badge="Mutual" tone="mutuals" />
         </TabsContent>
       </Tabs>
     </div>
   );
 }
+

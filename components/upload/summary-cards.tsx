@@ -1,10 +1,20 @@
-"use client";
+﻿"use client";
 
-function Stat({ title, value, highlight }: { title: string; value: string; highlight?: boolean }) {
+type Tone = "not-back" | "fans" | "mutuals" | "unfollowers";
+
+function Stat({
+  title,
+  value,
+  tone,
+}: {
+  title: string;
+  value: string;
+  tone?: Tone;
+}) {
   return (
-    <div className={`rounded-2xl border p-4 ${highlight ? "border-ig" : ""}`}>
+    <div className="stat-card" data-tone={tone}>
       <p className="text-xs text-muted-foreground">{title}</p>
-      <p className={`mt-1 text-lg font-semibold ${highlight ? "text-ig" : ""}`}>{value}</p>
+      <p className="stat-value mt-1 text-lg font-semibold">{value}</p>
     </div>
   );
 }
@@ -25,25 +35,29 @@ export function SummaryCards({
   mutuals: number;
 }) {
   return (
-    <div className="rounded-3xl border bg-background/70 backdrop-blur p-6 shadow-sm">
+    <div className="lucid-panel p-6">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm text-muted-foreground">Your account</p>
           <p className="font-semibold">@{username}</p>
         </div>
-        <div className="h-10 w-10 rounded-full ig-gradient" />
+        <span className="tone-chip" data-tone="mutuals">
+          <span className="tone-dot" /> Local only
+        </span>
       </div>
 
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Stat title="Followers" value={followers.toLocaleString()} />
         <Stat title="Following" value={following.toLocaleString()} />
-        <Stat title="Unfollowers" value={notBack.toLocaleString()} highlight />
-        <Stat title="Fans" value={fans.toLocaleString()} />
+        <Stat title="Not following back" value={notBack.toLocaleString()} tone="not-back" />
+        <Stat title="Fans" value={fans.toLocaleString()} tone="fans" />
       </div>
 
       <div className="mt-3 text-xs text-muted-foreground">
-        Mutuals: <span className="font-medium text-foreground">{mutuals.toLocaleString()}</span>
+        Mutuals:{" "}
+        <span className="font-medium text-[var(--tone-mutuals)]">{mutuals.toLocaleString()}</span>
       </div>
     </div>
   );
 }
+
