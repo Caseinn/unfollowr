@@ -4,6 +4,9 @@ export type ParsedIG = {
   following: string[];
 };
 
+const MAX_DEPTH = 25;
+const MAX_NODES = 200000;
+
 const uniq = (arr: string[]) =>
   Array.from(new Set(arr.map((s) => s.trim()).filter(Boolean)));
 
@@ -15,9 +18,18 @@ type FollowersNode = {
 export function extractFollowersUsernames(json: unknown): string[] {
   const out: string[] = [];
 
-  const walk = (node: unknown) => {
+  const walk = (node: unknown, depth: number, state: { nodes: number }) => {
     if (!node) return;
-    if (Array.isArray(node)) return node.forEach(walk);
+    if (depth > MAX_DEPTH) throw new Error("Export data is too deeply nested.");
+    if (state.nodes > MAX_NODES) throw new Error("Export data is too large.");
+
+    if (Array.isArray(node)) {
+      for (const child of node) {
+        state.nodes += 1;
+        walk(child, depth + 1, state);
+      }
+      return;
+    }
 
     if (typeof node === "object") {
       const obj = node as FollowersNode;
@@ -29,12 +41,13 @@ export function extractFollowersUsernames(json: unknown): string[] {
         }
       }
       for (const k of Object.keys(obj)) {
-        walk(obj[k]);
+        state.nodes += 1;
+        walk(obj[k], depth + 1, state);
       }
     }
   };
 
-  walk(json);
+  walk(json, 0, { nodes: 0 });
   return uniq(out);
 }
 
