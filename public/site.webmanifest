@@ -1,0 +1,21 @@
+﻿{
+  "name": "Unfollowr",
+  "short_name": "Unfollowr",
+  "description": "Upload your Instagram export zip to see unfollowers, not following back, and mutuals.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAFA",
+  "theme_color": "#FD1D1D",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
